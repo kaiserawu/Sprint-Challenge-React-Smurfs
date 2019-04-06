@@ -19,3 +19,15 @@ a {
 .active {
   color: gray;
 }
+
+.Smurf {
+  width: 30%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.Smurf button {
+  position: absolute;
+  top: 0;
+  right: 30px;
+}

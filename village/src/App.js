@@ -11,6 +11,7 @@ class App extends Component {
     super(props);
     this.state = {
       smurfs: [],
+      id: ''
     };
   }
   // add any needed code to ensure that the smurfs collection exists on state and it has data coming from the server
@@ -20,9 +21,21 @@ class App extends Component {
   componentDidMount() {
     axios.get('http://localhost:3333/smurfs')
       .then(res => {
-        this.setState({smurfs: res.data});
+        this.setState({
+          smurfs: res.data,
+          id: res.data.length
+        });
       })
       .catch(err => console.warn(err));
+  }
+
+  getId = () => {
+    this.setState(prevState => {
+      return {
+        id: prevState.id + 1
+      }
+    })
+    return this.state.id;
   }
 
   render() {
@@ -33,7 +46,7 @@ class App extends Component {
           <NavLink to='/smurf-form'>Add New Smurf</NavLink>
         </nav>
         <Route exact path='/' render={props => <Smurfs {...props} smurfs={this.state.smurfs} />} />
-        <Route path='/smurf-form' component={SmurfForm} />
+        <Route path='/smurf-form' render={props => <SmurfForm {...props} getId={this.getId} />} />
       </div>
     );
   }

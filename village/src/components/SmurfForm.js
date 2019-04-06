@@ -7,7 +7,8 @@ class SmurfForm extends Component {
     this.state = {
       name: '',
       age: '',
-      height: ''
+      height: '',
+      id: this.props.getId()
     };
   }
 
@@ -25,7 +26,8 @@ class SmurfForm extends Component {
     this.setState({
       name: '',
       age: '',
-      height: ''
+      height: '',
+      id: this.props.getId()
     });
   }
 
