@@ -29,7 +29,7 @@ class App extends Component {
     return (
       <div className="App">
         <nav>
-          <NavLink to='/'>Smurf List</NavLink>
+          <NavLink exact to='/'>Smurf List</NavLink>
           <NavLink to='/smurf-form'>Add New Smurf</NavLink>
         </nav>
         <Route exact path='/' render={props => <Smurfs {...props} smurfs={this.state.smurfs} />} />
